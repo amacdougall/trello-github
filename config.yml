@@ -1,0 +1,9 @@
+trello:
+  api_key: "8bb1558afae674bcfa102a31241dff6e"
+  user_token: "cb7f126cf9eae05982f4bad718638fdf449c854d9780558344f7985081640ee2"
+
+github:
+  login: "amacdougall"
+  password: "not_really_my_password"
+  username: "amacdougall"
+  repository: "issues-api-test"
