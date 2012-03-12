@@ -4,7 +4,7 @@ require "yaml"
 require "json"
 
 
-# Handles communication with the Trello API
+# Handles communication with the Trello API.
 class Trello
   def initialize
     @api_root = "https://api.trello.com/1/"
@@ -29,16 +29,16 @@ class Trello
   end
 end
 
-# Handles communication with the Github API
+# Handles communication with the Github API.
 class Github
   attr_reader :username, :repository
 
   def initialize
     config = YAML.load(File.open("config.yml"))
 
-    @login = config["github"]["login"]
+    @login = config["github"]["login"] # username of issue creator
     @password = config["github"]["password"]
-    @username = config["github"]["username"] # github username
+    @username = config["github"]["username"] # username of repo owner
     @repository = config["github"]["repository"]
     
     @api_root = "https://#{@login}:#{@password}@api.github.com/"
@@ -51,8 +51,9 @@ class Github
     JSON.parse data
   end
 
-  # Creates a new Github issue from the supplied hash.
-  # Possible issue_data: {title: String, body: String, assignee: String, milestone: String, labels: Array}
+  # Creates a new Github issue from the supplied hash, and returns the JSON
+  # representation of the created issue. Possible issue_data: {title: String,
+  # body: String, assignee: String, milestone: String, labels: Array}
   def create_issue(issue_data)
     url = File.join(@api_root, "repos", @username, @repository, "issues")
     result = RestClient.post url, issue_data.to_json, {
