@@ -59,3 +59,16 @@ class Github
     JSON.parse result
   end
 end
+
+# Handle command-line invocation
+trello = Trello.new
+github = Github.new
+
+card_data = trello.card_from_url(ARGV[0])
+
+issue_data = {
+  title: card_data["name"],
+  body: card_data["desc"]
+}
+
+github.create_issue(issue_data)
