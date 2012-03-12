@@ -1,9 +1,12 @@
 trello:
-  api_key: "8bb1558afae674bcfa102a31241dff6e"
-  user_token: "cb7f126cf9eae05982f4bad718638fdf449c854d9780558344f7985081640ee2"
+  api_key: "trello_api_key_here"
+  user_token: "trello_token_with_read_access"
 
 github:
-  login: "amacdougall"
-  password: "not_really_my_password"
-  username: "amacdougall"
-  repository: "issues-api-test"
+  login: "your github username"
+  password: "your github password"
+
+  # username and repository where issues will be created,
+  # such as mycompany/my-project
+  username: "yourcompany"
+  repository: "your-project"

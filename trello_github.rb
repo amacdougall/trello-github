@@ -31,6 +31,8 @@ end
 
 # Handles communication with the Github API
 class Github
+  attr_reader :username, :repository
+
   def initialize
     config = YAML.load(File.open("config.yml"))
 
@@ -71,4 +73,5 @@ issue_data = {
   body: card_data["desc"]
 }
 
-github.create_issue(issue_data)
+issue = github.create_issue(issue_data)
+puts "#{github.username} successfully created issue #{issue['html_url']}."
