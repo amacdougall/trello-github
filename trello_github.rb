@@ -15,9 +15,15 @@ class Trello
     @token = config["trello"]["user_token"]
   end
 
-  # Returns data for the card with the supplied id, as a nested hash.
-  def card(card_id)
-    url = File.join(@api_root, "cards", card_id)
+  # Given a card URL, return the card as JSON.
+  def card_from_url(url)
+    uri = URI.parse url
+    card *uri.path.split("/")[-2..-1]
+  end
+
+  # Given the board id and card short id, return the card as JSON.
+  def card(board_id, card_short_id)
+    url = File.join(@api_root, "boards", board_id, "cards", card_short_id)
     data = RestClient.get url, {params: {key: @key, token: @token}}
     JSON.parse data
   end
