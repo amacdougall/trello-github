@@ -1,2 +1,5 @@
 # vim temp files
 *.sw[a-p]
+
+# actual config file, since it may contain sensitive info
+config.yml
